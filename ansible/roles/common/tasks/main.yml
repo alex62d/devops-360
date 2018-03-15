@@ -10,21 +10,26 @@
     name: "{{ item }}"
     state: installed
     update_cache: yes
-    with_items:
-      - htop
-      - telnet
-      - netstat
-      - ntp
-      - git
+  with_items:
+    - htop
+    - telnet
+    - net-tools
+    - ntp
+    - git
 
 - name: Set timezone
   timezone:
     name: Europe/Paris
 
+- name: Create app group
+  group:
+    name: app
+    state: present
+
 - name: Create app user
   user:
     name: app
-    uid: 202
+    append: yes
+    comment: "user app"
+    uid: 1040
     group: app
-    groups: app
-    shell: /bin/bash
