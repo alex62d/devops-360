@@ -13,7 +13,7 @@
   with_items:
     - htop
     - telnet
-    - netstat
+    - net-tools
     - ntp
     - git
 
