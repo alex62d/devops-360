@@ -94,3 +94,6 @@ ENV/
 
 # Custom section
 ansible/vault-secret
+
+.idea/
+.idea/*
