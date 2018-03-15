@@ -9,6 +9,7 @@
   apt:
     name: "{{ item }}"
     state: installed
+    update_cache: yes
     with_items:
       - htop
       - telnet
@@ -23,4 +24,7 @@
 - name: Create app user
   user:
     name: app
+    uid: 202
+    group: app
+    groups: app
     shell: /bin/bash

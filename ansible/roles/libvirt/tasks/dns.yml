@@ -54,24 +54,24 @@
   register: __libvirt_dns_key_secret
   changed_when: False
 
-- name: Configure DNSs for VMs
-  nsupdate:
-    state: "{{ (libvirt_vm_state == 'create') | ternary('present', 'absent') }}"
-    server: "{{ libvirt_dns_server }}"
-    type: A
-    ttl: 60
-    zone: "{{ libvirt_dns_zone }}"
-    value: "{{ item.value.ip }}"
-    record: "{{ item.key }}"
-    key_name: "{{ (__libvirt_dns_key_name.stdout) | replace('\"', '') | replace('{', '') }}"
-    key_secret: "{{ (__libvirt_dns_key_secret.stdout) | replace('\"', '') }}"
-  with_dict: "{{ __libvirt_vms }}"
+#- name: Configure DNSs for VMs
+#  nsupdate:
+#    state: "{{ (libvirt_vm_state == 'create') | ternary('present', 'absent') }}"
+#    server: "{{ libvirt_dns_server }}"
+#    type: A
+#    ttl: 60
+#    zone: "{{ libvirt_dns_zone }}"
+#    value: "{{ item.value.ip }}"
+#    record: "{{ item.key }}"
+#    key_name: "{{ (__libvirt_dns_key_name.stdout) | replace('\"', '') | replace('{', '') }}"
+#    key_secret: "{{ (__libvirt_dns_key_secret.stdout) | replace('\"', '') }}"
+#  with_dict: "{{ __libvirt_vms }}"
 
-- name: Wait for VMs to be reachable on SSH through their DNS
-  wait_for:
-    state: "{{ (libvirt_vm_state == 'create') | ternary('started', 'absent') }}"
-    host: "{{ item.key }}.{{ libvirt_dns_zone }}"
-    port: 22
-    delay: 0
-    timeout: 30
-  with_dict: "{{ __libvirt_vms }}"
+#- name: Wait for VMs to be reachable on SSH through their DNS
+#  wait_for:
+#    state: "{{ (libvirt_vm_state == 'create') | ternary('started', 'absent') }}"
+#    host: "{{ item.key }}.{{ libvirt_dns_zone }}"
+#    port: 22
+#    delay: 0
+#    timeout: 30
+#  with_dict: "{{ __libvirt_vms }}"
