@@ -5,8 +5,8 @@
   apt:
       name: "{{ item }}"
       state: installed
-      with_items:
-        - mysql
+  with_items:
+      - mysql
 
 - name: Update mysql root password for all root accounts
   mysql_user:
