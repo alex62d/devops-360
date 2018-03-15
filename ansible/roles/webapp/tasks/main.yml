@@ -1,2 +1,9 @@
 ---
 # tasks file for webapp
+
+# Everyone
+- include: clone.yml
+
+# Only webserver
+- include: webserver.yml
+when: "{{ webapp_setup_webserver }}"
