@@ -23,8 +23,8 @@
 
 - name: Create app user
   user:
-    name: app
-    uid: 202
-    group: app
-    groups: app
-    shell: /bin/bash
+    name: app-user
+    append: yes
+    comment: "user app"
+    uid: 1040
+    group: app-user
