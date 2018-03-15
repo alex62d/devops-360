@@ -10,12 +10,12 @@
     name: "{{ item }}"
     state: installed
     update_cache: yes
-    with_items:
-      - htop
-      - telnet
-      - netstat
-      - ntp
-      - git
+  with_items:
+    - htop
+    - telnet
+    - netstat
+    - ntp
+    - git
 
 - name: Set timezone
   timezone:
