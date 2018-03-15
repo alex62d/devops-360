@@ -21,10 +21,15 @@
   timezone:
     name: Europe/Paris
 
+- name: Create app group
+  group:
+    name: app
+    state: present
+
 - name: Create app user
   user:
-    name: app-user
+    name: app
     append: yes
     comment: "user app"
     uid: 1040
-    group: app-user
+    group: app
