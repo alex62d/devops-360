@@ -1,3 +1,13 @@
 libvirt_dns_server: 172.16.117.254
 libvirt_zone: dell117.u13.org
 libvirt_ip_prefix: '172.16.117'
+
+libvirt_vms:
+  00.webserver:
+    cpu: 1
+    mem: 768
+    ip: "{{ libvirt_ip_prefix }}.60"
+  00.database:
+    cpu: 1
+    mem: 768
+    ip: "{{ libvirt_ip_prefix }}.70"
